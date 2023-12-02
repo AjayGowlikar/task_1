@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css" crossorigin="anonymous">
+    <style>
+        body {
+          background-image: url('https://images.pexels.com/photos/6985001/pexels-photo-6985001.jpeg?auto=compress&cs=tinysrgb&w=1600');
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+
+          height: 100vh; /* Make the body take the full height of the viewport */
+          margin: 0; /* Remove default margin */
+        }
+
+        .registration-box {
+          background-color: #fff; /* White background color */
+          padding: 20px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow */
+          border-radius: 5px; /* Add rounded corners */
+          width: auto; /* Set the width of the box */
+        }
+        .button.cell {
+              background-image: url('https://images.pexels.com/photos/6985001/pexels-photo-6985001.jpeg?auto=compress&cs=tinysrgb&w=1600');
+              background-size: cover;
+              background-position: center;
+              background-size: auto;
+              color: #fff;
+              /* Additional styles for the button */
+          }
+      .border1{
+          border-radius: 5px;
+      }
+
+    </style>
+</head>
+<body style="background-colour:#f0f1f2;">
+
+<!--Navbar start -->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
+<!--    <a class="navbar-brand" href="#">Registration Form</a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--        <ul class="navbar-nav mr-auto">-->
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+<!--            </li>-->
+<!--            >-->
+<!--        </ul>-->
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <a class="btn btn-light my-2 my-sm-0" type="submit">Login</a>-->
+<!--            <a class="btn btn-light my-2 my-sm-0" type="submit">SingUp</a>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--Navbar End-->
+<div class="registration-box">
+                    <h3 class="text-center">Registration Form</h3>
+                    <!--                    <div th:if="${session.message}"-->
+                    <!--                    th:classappend="${#session.message}" class="alert alert-success"-->
+                    <!--                    role="alert">-->
+                    <!--                        <p th:text="${session.message}"></p>-->
+                    <!--                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>-->
+                    <!--                    </div>-->
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <div class="grid-x align-center-middle">
+            <div class="grid-container textbox">
+                <label>Full Name
+                    <input name="fullname" class="border1" type="text" placeholder="Enter Your Name" required>
+                </label>
+            </div>
+            <div class="grid-container">
+                <label>User Name
+                    <input name="username" class="border1" type="text" placeholder="Enter your email" aria-describedby="exampleHelpText" required>
+                </label>
+            </div>
+        </div>
+        <div class="grid-x align-center-middle">
+            <div class="grid-container textbox">
+                <label >Email Address</label>
+                <input type="email" class="form-control" placeholder="Enter your email"
+                       name="email" required>
+            </div>
+            <div class="grid-container">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" placeholder="Enter your number"
+                       name="phone_number" aria-describedby="emailHelp" required>
+            </div>
+        </div>
+        <div class="grid-x align-center-middle">
+            <div class="grid-container textbox">
+                <label >password</label>
+                <input  type="password" class="form-control"
+                        name="password" placeholder="Enter your password" aria-describedby="emailHelp" required>
+            </div>
+            <div class="grid-container">
+                <label >Confirm password</label>
+                <input id="confirmPasswordInput" type="password" placeholder="Confirm your password" class="form-control"
+                       aria-describedby="emailHelp" required>
+            </div>
+        </div>
+        <div class="grid-x grid-container">
+            <fieldset>
+
+                <label>Gender</label>
+                <div class="form-group row">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"><label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender"
+                               id="inlineRadio2" value="female"><label
+                            class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender"
+                               id="inlineRadio3" value="Not_prefered_to_say"><label
+                            class="form-check-label" for="inlineRadio3">Not prefered to say</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <button type="submit" class="button cell" >Submit</button>
+    </form>
+
+                </div>
+
+
+<!--&lt;!&ndash; Optional JavaScript &ndash;&gt;-->
+<!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
+
+<!--<script>-->
+<!--    // Get references to the password and confirm password input fields-->
+<!--    const passwordInput = document.getElementById('passwordInput');-->
+<!--    const confirmPasswordInput = document.getElementById('confirmPasswordInput');-->
+<!--    const registerButton = document.getElementById('registerButton');-->
+
+<!--    // Add click event listener to the register button-->
+<!--    registerButton.addEventListener('click', function () {-->
+<!--        // Get the values of both password fields-->
+<!--        const password = passwordInput.value;-->
+<!--        const confirmPassword = confirmPasswordInput.value;-->
+
+<!--        // Check if the passwords match-->
+<!--        if (password === confirmPassword) {-->
+<!--            // If passwords match, set the name attribute of the password input field to "password"-->
+<!--            passwordInput.setAttribute('name', 'password');-->
+<!--            // Submit the form or perform other actions as needed-->
+<!--        } else {-->
+<!--            // If passwords do not match, show a popup alert-->
+<!--            alert('Passwords do not match.');-->
+
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>
