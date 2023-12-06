@@ -32,4 +32,19 @@ public class UserController {
 
         return "redirect:/";
     }
+    @PostMapping("/login")
+public String login(@ModelAttribute UserDtls user, HttpSession session, Model model) {
+    try {
+        org.springframework.security.core.Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        session.setAttribute("user", userDetailsService.loadUserByUsername(user.getEmail()));
+        return "redirect:/dashboard";
+    } catch (Exception e) {
+        session.setAttribute("error", "Invalid email or password");
+        return "login";
+    }
+}
+
 }
